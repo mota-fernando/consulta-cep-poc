@@ -1,0 +1,4 @@
+/node_modules/
+mytests.js
+package-lock.json
+consulta.ts
