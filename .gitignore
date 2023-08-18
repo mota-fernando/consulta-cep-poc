@@ -2,3 +2,5 @@
 mytests.js
 package-lock.json
 consulta.ts
+.DS_store
+*.bak
