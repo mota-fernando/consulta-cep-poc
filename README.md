@@ -23,7 +23,7 @@ Consulta Cep is a TypeScript project that provides a convenient way to query add
 
 The project follows the following directory structure:
 
-<p>
+<pre>
 ├── src                       
 │   ├── controllers      
 │   ├── routers
@@ -39,7 +39,7 @@ The project follows the following directory structure:
 ├── public
 ├── services
 └── tests
-</p>
+</pre>
 
 ## Setup
 
