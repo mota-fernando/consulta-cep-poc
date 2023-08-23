@@ -1,23 +1,20 @@
 import { Request, Response } from 'express'
-import { CepService } from '../../services/CepService'
-import { MessagePublisher } from '../../helpers/MessagePublisher';
+const CepSearsh = require('../../dis/CepSearch')
+
 
 export class CepController {
-  private cepService: CepService
-  private messagePublisher: MessagePublisher
+  private search: CepSearsh
 
   constructor() {
-    this.cepService = new CepService()
-    this.messagePublisher = new MessagePublisher('cep_queue')
+    this.search = new CepSearsh()
+    
   }
 
   public getCep = async (req: Request, res: Response): Promise<void> => {
     try {
       const cep = req.params.cep 
-      const address = await this.cepService.getAddressByCep(cep) 
-
-      this.messagePublisher.connect().then(() => this.messagePublisher.publishMessage(address)).finally(() => this.messagePublisher.disconnect());
-
+      const address = this.search.CepQuickSearch(cep)
+      
       res.status(200).json(address) 
     } catch (error) {
       res.status(500).json({ error: 'Erro ao obter o endereço.' })
